@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
-html {
-  font-size: 100%;
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
 }
