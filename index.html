@@ -16,25 +16,16 @@
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity mindar-image-target="targetIndex: 0">
         <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-        <a-entity occlusion-component="occlusionModelUrl: https://cdn.glitch.global/e8ae677c-5258-4984-ad8d-347b2293a371/plane.glb;
-                                    occludedModelUrl: https://cdn.glitch.global/e8ae677c-5258-4984-ad8d-347b2293a371/xbot.glb;
-                                    occlusionModelPosition: 0 1 -3;
-                                    occlusionModelRotation: 0 0 0;
-                                    occlusionModelScale: 2 2 2;
-                                    occlusionModelPart: false;
-                                    partNames: Beta_Surface; 
-                                    occludedModelPosition: 0 0 -4;
-                                    occludedModelRotation: 0 0 0;
-                                    occludedModelScale: 2 2 2;"></a-entity>
-      <a-entity occlusion-component="occlusionModelUrl: https://cdn.glitch.global/e8ae677c-5258-4984-ad8d-347b2293a371/sphere.glb;
-                                    occludedModelUrl: https://cdn.glitch.global/e8ae677c-5258-4984-ad8d-347b2293a371/box.glb;
-                                    occlusionModelPosition: -3 1 -3;
-                                    occlusionModelRotation: 0 0 0;
-                                    occlusionModelScale: 1 1 1;
-                                    occlusionModelPart: false;
-                                    occludedModelPosition: -3 1 -3.5;
-                                    occludedModelRotation: 0 0 0;
-                                    occludedModelScale: 2 2 2;"></a-entity>
+        <a-entity occlusion-component="occlusionModelUrl: model/cylinder.glb;
+                                      occludedModelUrl: model/triangularPyramid.glb;
+                                      occlusionModelPosition: 0 0 0;
+                                      occlusionModelRotation: 0 0 0;
+                                      occlusionModelScale: 0.5 0.5 0.5;
+                                      occlusionModelPart: false;
+                                      occludedModelPosition: 0 0 0;
+                                      occludedModelRotation: 0 0 0;
+                                      occludedModelScale: 0.5 0.5 0.5;">
+        </a-entity>
       </a-entity>
     </a-scene>
   </body>
