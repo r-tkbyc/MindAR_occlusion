@@ -20,6 +20,7 @@
 <body>
   <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
     <a-assets>
+      <img id="sky" src="image/golden_bay_2k.jpg">
       <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png">
       <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
     </a-assets>
@@ -43,7 +44,7 @@
       </a-curve>
       <a-camera alongpath="curve: #track1; loop: true; dur: 10000; easing: ease;" wasd-controls-enabled="false"></a-camera -->
         
-      <a-sky scale="0.001 0.001 0.001" position="0 0 0"></a-sky>
+      <a-sky src="#sky" scale="0.0005 0.0005 0.0005" position="0 0 0"></a-sky>
     </a-entity>
   </a-scene>
 </body>
