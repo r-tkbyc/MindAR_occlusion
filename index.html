@@ -1,59 +1,51 @@
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-    <script src='https://cdn.jsdelivr.net/gh/akbartus/A-Frame-Occlusion-Component/js/occlusion-component.js'></script><!-- add -->
-  </head>
 
-  <body>
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
-        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
-      </a-assets>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="1" width="0.552" rotation="0 0 90"></a-plane>
-        <a-entity occlusion-component="occlusionModelUrl: /model/cylinder.glb;
-                                      occludedModelUrl: /model/triangularPyramid.glb;
-                                      occlusionModelPosition: 0 0.2 0;
-                                      occlusionModelRotation: 0 0 0;
-                                      occlusionModelScale: 0.5 0.5 0.5;
-                                      occlusionModelPart: false;
-                                      occludedModelPosition: 0 0.2 0;
-                                      occludedModelRotation: 0 0 0;
-                                      occludedModelScale: 0.5 0.5 0.5;">
-        </a-entity>
+  <script>
+  AFRAME.registerComponent('mask', {
+    init: function () {
+      const material = this.el.getObject3D('mesh').material;
+      material.colorWrite = false;
+      console.log(material);
+    }
+  });
+
+  </script>
+</head>
+
+<body>
+  <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-assets>
+      <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png">
+      <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-camera position="0 0 0" far="100" look-controls="enabled: false"></a-camera>
+
+    <a-entity mindar-image-target="targetIndex: 0">
+      <a-plane mask color="#CCC" position="-5.5 0 0" height="10" width="10"></a-plane>
+      <a-plane mask color="#CCC" position="5.5 0 0" height="10" width="10"></a-plane>
+      <a-plane mask color="#CCC" position="0 5.3 0" height="10" width="10"></a-plane>
+      <a-plane mask color="#CCC" position="0 -5.3 0" height="10" width="10"></a-plane>
+      
+      <a-entity>
+        <a-gltf-model rotation="0 0 0" position="0 -0.2 -0.5" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
       </a-entity>
-    </a-scene>
-  </body>
 
-  <!--
-  <body>
-    <a-scene>
-      <a-entity occlusion-component="occlusionModelUrl: https://cdn.glitch.global/e8ae677c-5258-4984-ad8d-347b2293a371/plane.glb;
-                                    occludedModelUrl: https://cdn.glitch.global/e8ae677c-5258-4984-ad8d-347b2293a371/xbot.glb;
-                                    occlusionModelPosition: 0 1 -3;
-                                    occlusionModelRotation: 0 0 0;
-                                    occlusionModelScale: 2 2 2;
-                                    occlusionModelPart: false;
-                                    partNames: Beta_Surface;
-                                    occludedModelPosition: 0 0 -4;
-                                    occludedModelRotation: 0 0 0;
-                                    occludedModelScale: 2 2 2;"></a-entity>
-      <a-entity occlusion-component="occlusionModelUrl: https://cdn.glitch.global/e8ae677c-5258-4984-ad8d-347b2293a371/sphere.glb;
-                                    occludedModelUrl: https://cdn.glitch.global/e8ae677c-5258-4984-ad8d-347b2293a371/box.glb;
-                                    occlusionModelPosition: -3 1 -3;
-                                    occlusionModelRotation: 0 0 0;
-                                    occlusionModelScale: 1 1 1;
-                                    occlusionModelPart: false;
-                                    occludedModelPosition: -3 1 -3.5;
-                                    occludedModelRotation: 0 0 0;
-                                    occludedModelScale: 2 2 2;"></a-entity>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color='#ECECEC'></a-sky>
-  </body>
--->
+      <!--a-curve id="track1">
+        <a-curve-point position="0 0 50"></a-curve-point>
+        <a-curve-point position="0 0 30"></a-curve-point>
+        <a-curve-point position="0 0 50"></a-curve-point>
+      </a-curve>
+      <a-camera alongpath="curve: #track1; loop: true; dur: 10000; easing: ease;" wasd-controls-enabled="false"></a-camera -->
+        
+      <a-sky scale="0.001 0.001 0.001" position="0 0 0"></a-sky>
+    </a-entity>
+  </a-scene>
+</body>
+
 </html>
