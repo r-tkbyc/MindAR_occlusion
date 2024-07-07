@@ -12,79 +12,7 @@
         console.log(material);
       }
     });
-
-    let isPaused = false;
-      const btnStart = document.getElementById('btn-start');
-      const btnPause = document.getElementById('btn-pause');
-
-      btnStart.addEventListener('click', () => {
-        const model = document.querySelector('#item');
-        if (model) {
-          const animationMixer = model.components['animation-mixer'];
-          if (animationMixer) {
-            const actions = animationMixer.mixer._actions;
-            if (actions.length > 0) {
-              const action = actions[0];
-              if (isPaused) {
-                action.paused = false; // 一時停止を解除
-              } else {
-                action.play();
-              }
-              isPaused = false;
-            }
-          }
-        }
-        btnStart.style.display = 'none';
-        btnPause.style.display = 'block';
-      });
-
-      btnPause.addEventListener('click', () => {
-        const model = document.querySelector('#item');
-        if (model) {
-          const animationMixer = model.components['animation-mixer'];
-          if (animationMixer) {
-            const actions = animationMixer.mixer._actions;
-            if (actions.length > 0) {
-              const action = actions[0];
-              action.paused = true; // 一時停止
-              isPaused = true;
-            }
-          }
-        }
-        btnPause.style.display = 'none';
-        btnStart.style.display = 'block';
-      });
-
-      AFRAME.registerComponent('stop-animation-on-load', {
-        init: function () {
-          const el = this.el;
-          el.addEventListener('model-loaded', () => {
-            const model = el.getObject3D('mesh');
-            if (model && model.animations) {
-              const mixer = el.components['animation-mixer'].mixer;
-              mixer.stopAllAction();
-            }
-          });
-        }
-      });
-
-      document.querySelector('#item').setAttribute('stop-animation-on-load', '');
   </script>
-
-  <style>
-    .btn {
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #eee;
-      color: #333;
-      padding: 1rem 2.5rem;
-      border: 0;
-      border-radius: 0.3rem;
-      margin: 0.5rem;
-    }
-  </style>
 </head>
 
 <body>
@@ -107,7 +35,7 @@
       <a-plane hider-material color="#f00" position="0 10.28 0" height="20" width="20"></a-plane>
       <a-plane hider-material color="#f00" position="0 -10.28 0" height="20" width="20"></a-plane>
       
-      <a-entity id="item">
+      <a-entity>
         <a-plane src="#card" position="0 0 -0.01" height="1" width="0.552" rotation="0 0 90" scale="1.03 1.03 1.03"
                 animation="property: position; from: 0 0 -0.01; to: 0 1 -0.01; dur: 3000; easing: easeInOutQuad; delay: 3000;"></a-plane>
         <a-entity position="0 -1 -0.5" animation="property: position; to: 0 -0.2 -0.5; easing: easeOutQuad; delay: 6000;">
@@ -125,7 +53,7 @@
         
       <a-sky src="#sky" scale="0.01 0.01 0.01" position="0 0 0"></a-sky>
     </a-entity>
-    <a-text style="color: #f00">Ver1.9.1</a-text>
+    <a-text style="color: #f00">Ver1.9.2</a-text>
   </a-scene>
 </body>
 </html>
