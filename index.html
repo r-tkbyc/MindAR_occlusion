@@ -6,14 +6,13 @@
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
   <script>
-  AFRAME.registerComponent('hider-material', {
-    init: function () {
-      const material = this.el.getObject3D('mesh').material;
-      material.colorWrite = false;
-      console.log(material);
-    }
-  });
-
+    AFRAME.registerComponent('hider-material', {
+      init: function () {
+        const material = this.el.getObject3D('mesh').material;
+        material.colorWrite = false;
+        console.log(material);
+      }
+    });
   </script>
 </head>
 
