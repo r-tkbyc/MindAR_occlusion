@@ -23,6 +23,8 @@
       <img id="sky" src="image/golden_bay_2k.jpg">
       <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png">
       <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+      <a-asset-item id="cylinder" src="model/cylinder.glb"></a-asset-item>
+      <a-asset-item id="triangularPyramid" src="model/triangularPyramid.glb"></a-asset-item>
     </a-assets>
 
     <a-camera look-controls="enabled: false"></a-camera>
@@ -34,7 +36,9 @@
       <a-plane mask color="#CCC" position="0 -10.28 0" height="20" width="20"></a-plane>
       
       <a-entity>
-        <a-gltf-model rotation="0 0 0" position="0 -0.25 -0.5" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+        <!-- <a-gltf-model rotation="0 0 0" position="0 -0.25 -0.5" scale="0.005 0.005 0.005" src="#avatarModel"> -->
+          <a-gltf-model rotation="0 0 0" position="0 0 0" scale="0.5 0.5 0.5" src="#cylinder"></a-gltf-model>
+          <a-gltf-model rotation="0 0 0" position="0 0 0" scale="0.5 0.5 0.5" src="#triangularPyramid"></a-gltf-model>
       </a-entity>
 
       <!--a-curve id="track1">
